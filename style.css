@@ -142,7 +142,10 @@ input:focus, select:focus, button:focus-visible { outline: 2px solid var(--sea);
   font-size: 12px;
   color: var(--muted);
 }
-.links { display: flex; gap: 12px; }
+.card-foot { flex-wrap: wrap; }
+.card-foot > span:first-child { white-space: nowrap; }
+.links { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.links a, .links .map-link { white-space: nowrap; }
 .links a { color: var(--sea); font-weight: 700; text-decoration: none; }
 .links a:hover { text-decoration: underline; }
 

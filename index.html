@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -63,6 +64,13 @@
       </div>
     </section>
 
+    <section class="map-section" aria-labelledby="mapTitle">
+      <h2 id="mapTitle" class="sec-title">地図で探す</h2>
+      <p class="map-lead">ピンをタップすると、ホテル名と料金の目安が出ます。上の条件で絞り込むと、地図のピンも連動します。</p>
+      <div id="map" class="map" role="region" aria-label="ブッフェの地図"></div>
+      <p class="map-note" id="mapNote"></p>
+    </section>
+
     <p class="count" id="count" aria-live="polite"></p>
     <section class="grid" id="list"></section>
 
@@ -76,7 +84,9 @@
     <p>© 沖縄ホテルブッフェ帖</p>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="data.js"></script>
+  <script src="map.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

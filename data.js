@@ -8,6 +8,7 @@
  *  restaurant: レストラン名（不明なら空文字）
  *  area      : "naha" | "south" | "central" | "west" | "north" | "islands"
  *  city      : 市町村名（表示用）
+ *  lat, lng  : 地図のピンの位置（緯度・経度）。住所から調べる。分からなければ null（地図に出ない）
  *  meals     : 提供している時間帯 ["breakfast","lunch","dinner"] のうち該当するもの
  *  prices    : { lunch: {adult, child}, dinner: {adult, child} }  ※円・不明なら null
  *  priceNote : 料金についての補足（土日祝のみ・サービス料別 など）
@@ -26,6 +27,8 @@ window.BUFFETS = [
     restaurant: "THE 7th TERRACE RYUKYU",
     area: "naha",
     city: "那覇市（県庁前駅すぐ）",
+    lat: 26.21473,
+    lng: 127.67904,
     meals: ["lunch"],
     prices: { lunch: { adult: 4400, child: 2700 }, dinner: null },
     priceNote: "土日祝ランチ・90分制／大人4,400円〜、小人2,700円〜、幼児1,000円〜（税込）",
@@ -42,6 +45,8 @@ window.BUFFETS = [
     restaurant: "プランタン",
     area: "naha",
     city: "那覇市（壺川駅から徒歩約10分）",
+    lat: 26.2089,
+    lng: 127.6805,
     meals: ["lunch", "dinner"],
     prices: { lunch: { adult: 4000, child: 2800 }, dinner: null },
     priceNote: "ランチ大人4,000円・6〜11歳2,800円（税・サ込／2025年時点の予約サイト掲載）",
@@ -52,19 +57,21 @@ window.BUFFETS = [
     checked: "2026-11-11"
   },
   {
-    id: "sail-kitchen-senaga",
-    hotel: "瀬長島エリア",
+    id: "southgate-sail-kitchen",
+    hotel: "サウスゲートホテル沖縄",
     restaurant: "The Sail Kitchen",
-    area: "south",
-    city: "豊見城市（那覇空港から車で約11分）",
+    area: "naha",
+    city: "那覇市前島（美栄橋駅から徒歩約6分）",
+    lat: 26.2238,
+    lng: 127.68389,
     meals: ["lunch", "dinner"],
     prices: { lunch: { adult: 3000, child: null }, dinner: { adult: 5000, child: null } },
-    priceNote: "ランチ3,000円／ディナー5,000円（目安）",
-    hours: "",
-    tags: ["空港近く", "和洋中", "海が見える"],
-    description: "和洋中の料理が並ぶブッフェ。空港から近く、到着日・出発日にも寄りやすい立地。",
-    source: "https://www.his-j.com/okinawa/op/activity/detail/?opid=6651",
-    checked: "2026-11-11"
+    priceNote: "ランチ3,000円〜／ディナー5,000円〜（目安。予約サイトにより4,000円・6,000円のプランもあり）",
+    hours: "ランチ 11:00〜15:00／ディナー 17:00〜21:30（予約サイト掲載）",
+    tags: ["オールデイブッフェ", "世界の料理", "駐車場あり"],
+    description: "世界各国の料理が並ぶオールデイブッフェ。ブッフェに加えてオーダー式の料理も選べる。",
+    source: "https://www.tablecheck.com/ja/southgatehotel-thesailkitchen",
+    checked: "2026-11-25"
   },
   {
     id: "prince-ginowan-jinon",
@@ -72,6 +79,8 @@ window.BUFFETS = [
     restaurant: "ジノン",
     area: "central",
     city: "宜野湾市",
+    lat: 26.27717,
+    lng: 127.7324,
     meals: ["lunch", "dinner"],
     prices: { lunch: null, dinner: null },
     priceNote: "料金はフェアごとに変動。公式サイトで確認してください",
@@ -87,6 +96,8 @@ window.BUFFETS = [
     restaurant: "",
     area: "central",
     city: "北谷町（アメリカンビレッジ隣接）",
+    lat: 26.31867,
+    lng: 127.75485,
     meals: ["dinner"],
     prices: { lunch: null, dinner: { adult: 4700, child: null } },
     priceNote: "ディナー4,700円（2026年8月・旅行会社プラン掲載価格）",
@@ -102,6 +113,8 @@ window.BUFFETS = [
     restaurant: "",
     area: "west",
     city: "恩納村",
+    lat: 26.5057,
+    lng: 127.85966,
     meals: ["dinner"],
     prices: { lunch: null, dinner: { adult: 6000, child: 3500 } },
     priceNote: "琉球料理ディナーブッフェ 大人6,000円・小学生3,500円（ソフトドリンク・ショーチャージ込、サービス料15%別）",
@@ -117,6 +130,8 @@ window.BUFFETS = [
     restaurant: "",
     area: "west",
     city: "恩納村",
+    lat: 26.46102,
+    lng: 127.81181,
     meals: ["lunch"],
     prices: { lunch: { adult: 3800, child: null }, dinner: null },
     priceNote: "夏季（2026年7〜9月）土日祝ランチ 大人3,800円",
@@ -132,6 +147,8 @@ window.BUFFETS = [
     restaurant: "",
     area: "west",
     city: "恩納村",
+    lat: 26.43534,
+    lng: 127.78845,
     meals: ["dinner"],
     prices: { lunch: null, dinner: null },
     priceNote: "料金は要確認（過去の期間限定開催時は大人6,000円）",

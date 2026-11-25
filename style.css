@@ -146,7 +146,70 @@ input:focus, select:focus, button:focus-visible { outline: 2px solid var(--sea);
 .links a { color: var(--sea); font-weight: 700; text-decoration: none; }
 .links a:hover { text-decoration: underline; }
 
+.links .map-link {
+  font: inherit;
+  font-weight: 700;
+  color: var(--sea);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.links .map-link::before { content: "🗺 "; }
+.links .map-link:hover { text-decoration: underline; }
+
+.card { scroll-margin-top: 16px; }
+.card.flash { animation: flash 1.6s ease-out; }
+@keyframes flash {
+  0% { box-shadow: 0 0 0 4px rgba(232, 102, 74, .7); }
+  100% { box-shadow: 0 2px 10px rgba(0, 0, 0, .05); }
+}
+
 .empty { text-align: center; color: var(--muted); padding: 48px 16px; grid-column: 1 / -1; }
+
+/* ---------- Map ---------- */
+.map-section { margin-top: 32px; }
+.sec-title {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 22px;
+  margin: 0 0 4px;
+  color: var(--sea-deep);
+}
+.map-lead { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.map {
+  height: clamp(320px, 55vh, 480px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(10, 79, 99, .08);
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+.map-note { font-size: 12px; color: var(--muted); margin: 6px 4px 0; min-height: 1em; }
+
+/* ピン（しずく形） */
+.pin { background: none; border: none; }
+.pin span {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 1px;
+  background: var(--pin);
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+/* ポップアップ */
+.leaflet-popup-content-wrapper { border-radius: 12px; }
+.leaflet-popup-content { margin: 12px 14px; font-family: "Noto Sans JP", system-ui, sans-serif; }
+.popup p { margin: 0; }
+.popup-area { font-size: 11px; font-weight: 700; color: var(--sea-deep); }
+.popup h3 { font-family: "Zen Maru Gothic", sans-serif; font-size: 15px; line-height: 1.4; margin: 2px 0; }
+.popup-rest { font-size: 12px; color: var(--muted); }
+.popup-price { font-size: 13px; font-weight: 700; color: var(--hibiscus); margin-top: 4px !important; }
+.popup-links { display: flex; gap: 14px; margin-top: 8px !important; font-size: 13px; }
+.popup-links a { color: var(--sea); font-weight: 700; text-decoration: none; padding: 4px 0; }
 
 /* ---------- Notice / footer ---------- */
 .notice {

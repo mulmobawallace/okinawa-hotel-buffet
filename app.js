@@ -86,7 +86,7 @@
       .map((m) => priceBox(MEALS[m], b.prices[m]))
       .join("");
     return `
-      <article class="card" data-area="${esc(b.area)}">
+      <article class="card" id="${esc(b.id)}" data-area="${esc(b.area)}">
         <div class="card-body">
           <div class="meta"><span class="badge">${esc(AREAS[b.area])}</span>${mealBadges}</div>
           <h3>${esc(b.hotel)}</h3>
@@ -100,6 +100,7 @@
         <div class="card-foot">
           <span>確認日 ${esc(b.checked)}</span>
           <span class="links">
+            ${typeof b.lat === "number" ? `<button type="button" class="map-link" data-map="${esc(b.id)}">地図</button>` : ""}
             ${b.source ? `<a href="${esc(b.source)}" target="_blank" rel="noopener">出典</a>` : ""}
             <a href="${search}" target="_blank" rel="noopener">最新情報を検索</a>
           </span>
@@ -113,6 +114,7 @@
     $("list").innerHTML = list.length
       ? list.map(card).join("")
       : `<p class="empty">条件に合うブッフェが見つかりませんでした。条件をゆるめてみてください。</p>`;
+    if (window.BuffetMap) window.BuffetMap.update(list);
   }
 
   function init() {
@@ -120,6 +122,12 @@
     buildChips($("areaChips"), usedAreas.map((a) => [a, AREAS[a]]), state.areas);
     const usedMeals = Object.keys(MEALS).filter((m) => data.some((b) => b.meals.includes(m)));
     buildChips($("mealChips"), usedMeals.map((m) => [m, MEALS[m]]), state.meals);
+
+    // カードの「地図」ボタン → 地図へ移動してピンを開く
+    $("list").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-map]");
+      if (btn && window.BuffetMap) window.BuffetMap.focus(btn.dataset.map);
+    });
 
     $("q").addEventListener("input", (e) => {
       state.q = e.target.value.trim().toLowerCase();
